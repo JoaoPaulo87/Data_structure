@@ -14,24 +14,26 @@ private:
 public:
 	bool IsEmpty() const;
 	unsigned int Size() const;
-	int FirstElement() const;
+	TYPE FirstElement() const; 
 	Queue();
 	Queue(const Queue& other);
 	~Queue();
 	friend std::ostream& operator<<(std::ostream& os, const Queue& sourceObject);
 	Queue& operator=(const Queue& other);
 	void Push(const TYPE& value);
-	TYPE Pop(); // this should be TYPE as return value
+	TYPE Pop();
 };
 
 int main()
 {
+	// The functions FirstElement(), Size() and IsEmpty() are public just for testing.
+
 	Queue q;
 
 	q.Push(5);
 	q.Push(9);
 	q.Push(11);
-	printf("The first element is %d\n", q.FirstElement());
+	printf("The first element is %d\n", q.FirstElement()); 
 	printf("\n");
 
 	q.Pop();
@@ -132,12 +134,12 @@ unsigned int Queue::Size() const
 	return this->size;
 }
 
-int Queue::FirstElement() const // this is a TYPE return value
+TYPE Queue::FirstElement() const
 {
 	return this->queue[0];
 }
 
-TYPE Queue::Pop() // this should be TYPE as return value
+TYPE Queue::Pop()
 {
 	if (!IsEmpty())
 	{
